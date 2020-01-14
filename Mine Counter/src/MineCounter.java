@@ -16,8 +16,6 @@ public class MineCounter {
 		emptyboard();
 		addmines();
 		countmines();
-		
-		
 	}
 	
 	
