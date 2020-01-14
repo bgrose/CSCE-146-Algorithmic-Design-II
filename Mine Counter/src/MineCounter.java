@@ -59,6 +59,7 @@ public class MineCounter {
 			int randX = random.nextInt(BOARDSIZE); //Creates Cord
 			int randY = random.nextInt(BOARDSIZE);
 			
+			//Checks Position
 			if(board[randX][randY].equals("*")) continue;
 			board[randX][randY] = "*";
 			minecount++;
