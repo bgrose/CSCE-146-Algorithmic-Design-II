@@ -5,12 +5,16 @@ import java.util.Random;
 
 public class MineCounter {
 
+	//Creates Sizes and Amounts
 	public static final int BOARDSIZE = 10;
 	public static final int MINEAMOUNT = 10;
 	public static Random random;
+	
 	//Makes Board
 	public static String[][] board;
 	
+	
+	//Runs the three boards
 	public static void main(String[] args) {
 		random = new Random();
 		emptyboard();
@@ -18,8 +22,8 @@ public class MineCounter {
 		countmines();
 	}
 	
-	
-	public static void emptyboard() //Empty Board
+	//Creates an Empty Board
+	public static void emptyboard() 
 	{
 		System.out.println("Creating an Empty Board");
 		
@@ -35,7 +39,8 @@ public class MineCounter {
 		printboard();
 	}
 	
-	public static void printboard() //Prints out Board
+	//Prints out Board
+	public static void printboard() 
 	{
 		for(int i=0; i<BOARDSIZE; i++)
 		{
@@ -47,7 +52,8 @@ public class MineCounter {
 		}
 	}
 	
-	public static void addmines() //Adds 10 mines to board random
+	//Adds 10 mines to board random
+	public static void addmines() 
 	{
 		System.out.println("Placing mines");
 		
@@ -67,7 +73,8 @@ public class MineCounter {
 		printboard();
 	}
 	
-	public static void countmines() //Adds count to board
+	//Adds count to board
+	public static void countmines() 
 	{
 		/*			Positioning for count
 		 * 
@@ -78,13 +85,15 @@ public class MineCounter {
 		 */
 		System.out.println("Performing mine count");
 		
+		
+		//Checks Each Spot
 		for(int x=0; x<BOARDSIZE; x++)
 		{
 			for(int y=0; y<BOARDSIZE; y++)
 			{
 				if(board[x][y].equals("*"))continue;
 				
-				//Adds for Mines using binary check
+				//Adds for Mines using binary T/F check
 				int N= y != 0 && board[x][y - 1].equals("*") ? 1 : 0;
 				int S = y != BOARDSIZE - 1 && board[x][y + 1].equals("*") ? 1 : 0;
 				int E = x != BOARDSIZE - 1 && board[x + 1][y].equals("*") ? 1 : 0;
