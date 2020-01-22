@@ -121,5 +121,27 @@ public class Board {
 	}
 	
 	//Sets Move
-	public 
+	public boolean setMove(int x, int y, String player)
+	{
+		boolean movePlaced = false;
+		
+		//Checks Location
+		if(x < 0 || x > 2 || y < 0 || y >0)
+		{
+			System.out.println("Invalid Move");
+			movePlaced = false;
+		}
+		else if(gameBoard[y][x] != "")
+		{
+			System.out.println("Invalid Move, Space ocupied");
+			movePlaced = false;
+		}
+		else
+		{
+			gameBoard[y][x] = player;
+		}
+		
+		return movePlaced;
+		
+	}
 }
