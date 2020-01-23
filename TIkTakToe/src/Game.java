@@ -34,7 +34,7 @@ public class Game {
 			}
 			
 			//Computer Move
-			System.out.println("Welcome to Tik Tak Toe");
+			System.out.println("Computer Play");
 			
 		}
 	}
