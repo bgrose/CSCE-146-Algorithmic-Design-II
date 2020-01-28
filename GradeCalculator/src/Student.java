@@ -101,17 +101,17 @@ public class Student {
 				(this.getHomeworkAverage()*.20);
 		
 		//Find highest grade
-		if(this.getFinal()>this.getExam01())
+		if(this.getFinal()>=this.getExam01() && this.getExam02() >= this.getExam01())
 		{
-			ret+=getFinal()*.30;
+			ret+=(this.getFinal()*.30)+(this.getExam02()*.30);
 		}
-		if(this.getExam01()>this.getExam02())
+		else if(this.getExam01()>this.getExam02() && this.getFinal()>this.getExam02())
 		{
-			ret+=this.getExam01()*.30;
+			ret+=(this.getExam01()*.30)+(this.getFinal()*.30);
 		}
-		if(this.getExam02()>this.getFinal())
+		else
 		{
-			ret+=this.getFinal()*.30;
+			ret+=(this.getExam02()*.30)+(this.getExam01()*.30);
 		}
 		
 		return ret;
@@ -156,33 +156,29 @@ public class Student {
 		while(filein.hasNextLine())
 		{
 			String header = filein.nextLine();
-			switch(header)
-			{
-				case AssignmentType.LABS:
+				if(header.contentEquals(AssignmentType.LABS))
 					currSection = AssignmentType.LABS;
-				case AssignmentType.LAB_REPORTS:
+				else if(header.contentEquals(AssignmentType.LAB_REPORTS))
 					currSection = AssignmentType.LAB_REPORTS;
-				case AssignmentType.HOMEWORK:
+				else if(header.contentEquals(AssignmentType.HOMEWORK))
 					currSection = AssignmentType.HOMEWORK;
-				case AssignmentType.EXAM01:
+				else if(header.contentEquals(AssignmentType.EXAM01))
 					currSection = AssignmentType.EXAM01;
-				case AssignmentType.EXAM02:
+				else if(header.contentEquals(AssignmentType.EXAM02))
 					currSection = AssignmentType.EXAM02;
-				case AssignmentType.FINAL:
+				else if(header.contentEquals(AssignmentType.FINAL))
 					currSection = AssignmentType.FINAL;
-				default:
-					this.addGrade(currSection, (Double.parseDouble(header)));
-					
+				else
+					this.addGrade(currSection, Double.parseDouble(header));	
 			}
-		}
 		filein.close();
 	}
 	
 	public String toString()
 	{
 		return "Lab Average: "+this.getLabAverage()+"\nLab Report Average: "+this.getLabReportAverage()+
-				"\nHomework Average: "+this.getHomeworkAverage()+"Exam 1 Score: "+this.getExam01()+
-				"Exam 2 Score: "+this.getExam02()+"\nFinal Exam: "+this.getFinal()+"\nRaw Total: "+
+				"\nHomework Average: "+this.getHomeworkAverage()+"\nExam 1 Score: "+this.getExam01()+
+				"\nExam 2 Score: "+this.getExam02()+"\nFinal Exam: "+this.getFinal()+"\nRaw Total: "+
 				this.getGradeNumeric()+"\nAdjusted: "+this.getGradeRounded()+"\n Grade: "+this.getGradeLetter();
 	}
 }
