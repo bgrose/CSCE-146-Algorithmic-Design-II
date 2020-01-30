@@ -42,7 +42,7 @@ public class Showcase {
 				double prizePrice = Double.parseDouble(input[input.length -1]);
 				prizes[count++] = new Prize(prizePrice, prizeName); //Adds to counter
 				
-				if(count == PRIZE)
+				if(count == POOL)
 					break;
 			}
 		}

@@ -151,29 +151,26 @@ public class Student {
 	public void readValues(String path) throws FileNotFoundException 
 	{
 		Scanner filein = new Scanner(new File(path));
-		String currSection = "";
+		String currLine;
 		
 		while(filein.hasNextLine())
 		{
-			String header = filein.nextLine();
-				if(header.contentEquals(AssignmentType.LABS))
-					currSection = AssignmentType.LABS;
-				else if(header.contentEquals(AssignmentType.LAB_REPORTS))
-					currSection = AssignmentType.LAB_REPORTS;
-				else if(header.contentEquals(AssignmentType.HOMEWORK))
-					currSection = AssignmentType.HOMEWORK;
-				else if(header.contentEquals(AssignmentType.EXAM01))
-					currSection = AssignmentType.EXAM01;
-				else if(header.contentEquals(AssignmentType.EXAM02))
-					currSection = AssignmentType.EXAM02;
-				else if(header.contentEquals(AssignmentType.FINAL))
-					currSection = AssignmentType.FINAL;
-				else
-					this.addGrade(currSection, Double.parseDouble(header));	
-			}
+			currLine = filein.nextLine();
+			String [] grades = currLine.split("\t");
+			
+			addGrade(grades[0], Double.parseDouble(grades[1]));
+			
+		}
+		
+		
 		filein.close();
 	}
 	
+	private double parseDouble(String string) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	public String toString()
 	{
 		return "Lab Average: "+this.getLabAverage()+"\nLab Report Average: "+this.getLabReportAverage()+
