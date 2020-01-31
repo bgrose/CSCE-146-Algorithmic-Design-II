@@ -2,6 +2,8 @@
  * Bradley Grose From 1/30/2020 Class Example
  */
 
+import java.util.Iterator;
+
 //T is an Object Type
 public class GenLL<T> {  //<T> Allows for Generic Link List of Type T
 
@@ -14,6 +16,34 @@ public class GenLL<T> {  //<T> Allows for Generic Link List of Type T
 			link = aLink;
 		}
 	}
+	
+	
+	private class ListIterator implements Iterator<T> //OverRides and needs hasNext and next
+	{
+		private ListNode iCurr;
+		public ListIterator(ListNode head) {
+			iCurr = head;
+		}
+		
+		public boolean hasNext() {
+			return iCurr != null;
+		}
+		
+		public T next() { //Moves to next
+			T ret = iCurr.data;
+			iCurr = iCurr.link;
+			return ret;
+		}
+		
+	}
+	
+	
+	public Iterator<T> iterator()
+	{
+		return new ListIterator(head);
+	}
+	
+	
 	private ListNode head; //Always first element
 	private ListNode curr; //Current node of interest
 	private ListNode prev; //Last node position
@@ -112,4 +142,6 @@ public class GenLL<T> {  //<T> Allows for Generic Link List of Type T
 			temp = temp.link;
 		}
 	}
+	
+	
 }

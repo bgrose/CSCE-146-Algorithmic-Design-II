@@ -17,6 +17,16 @@ public class tester {
 		}
 		iLL.print();
 		sLL.print();
+		
+		//MORE ADVANCED STUFF
+		
+		
+		/*
+		 for(int i : iLL)
+		{
+			System.out.println(i);
+		}
+		*/
 	}
 
 }
