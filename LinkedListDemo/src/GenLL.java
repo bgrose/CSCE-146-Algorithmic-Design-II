@@ -118,7 +118,7 @@ public class GenLL<T> {  //<T> Allows for Generic Link List of Type T
 	
 	//If you lose the reference point, the compiler will clear it out of the system
 	
-	public void removeCurretn()
+	public void removeCurrent()
 	{
 		if(curr != null && prev != null) //Makes sure u dont delete the head
 		{
