@@ -15,6 +15,7 @@ public class LinkedListQueue<T> {
 		}
 	}
 
+	//Attributes
 	private ListNode head;
 	private ListNode tail;
 	private int size;
