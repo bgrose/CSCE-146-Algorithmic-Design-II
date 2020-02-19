@@ -41,16 +41,16 @@ public class ReversePolishCalculator {
 			{
 				if(check())
 					return 0;
-				int num1 = valueStack.pop();
 				int num2 = valueStack.pop();
+				int num1 = valueStack.pop();
 				valueStack.push(num1*num2);
 			}
 			else if(str.equals("/")) //Divides numbers
 			{
 				if(check())
 					return 0;
-				int num1 = valueStack.pop();
 				int num2 = valueStack.pop();
+				int num1 = valueStack.pop();
 				if(num2 ==0)
 				{
 					System.out.println("Cant divide by 0");
