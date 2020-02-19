@@ -9,4 +9,6 @@ public interface StackInterface<T> {
 	public T peek();
 
 	public void print();
+
+	public int size();
 }
