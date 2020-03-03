@@ -21,6 +21,9 @@ public class GameFrontEnd {
 		System.out.println("Welcome to the Hot Potato Game!");
 
 		while (true) {
+			
+			players.reset();
+			
 			int duration = 2 + r.nextInt(MAXTIME);
 
 			System.out.println("Enter the number of players (2-10 Players).");
@@ -60,10 +63,12 @@ public class GameFrontEnd {
 					players.delete();
 					duration = 2 + r.nextInt(MAXTIME);
 				} else
+				{
 					System.out.println(players.getDataAtCurrent() + " is safe.");
+					duration -= HoldTime;
+					players.goToNext();
+				}
 
-				duration -= HoldTime;
-				players.goToNext();
 			}
 
 			System.out.println(players.getDataAtCurrent() + " has won the game");
@@ -72,12 +77,16 @@ public class GameFrontEnd {
 
 			if (answer.equalsIgnoreCase("y")) {
 				System.out.println();
+				players.goToNext();
+				players.reset();
 				continue;
 			} else if (answer.equalsIgnoreCase("n")) {
 				System.out.println("Thanks for playing");
 				break;
 			} else {
 				System.out.println("Not a valid answer, so you're playing again.");
+				players.goToNext();
+				players.reset();
 				continue;
 			}
 

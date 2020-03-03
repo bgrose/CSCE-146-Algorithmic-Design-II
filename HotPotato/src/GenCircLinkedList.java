@@ -21,9 +21,15 @@ public class GenCircLinkedList<T> {
 	// Make List
 	public GenCircLinkedList() {
 		head = new ListNode(null, null);
-		curr = head = tail;
+		curr = prev = tail = head;
 	}
 
+	public void reset()
+	{
+		head = new ListNode(null, null);
+		curr = prev = head = tail;
+	}
+	
 	// Goes to Next Value
 	public void goToNext() {
 
