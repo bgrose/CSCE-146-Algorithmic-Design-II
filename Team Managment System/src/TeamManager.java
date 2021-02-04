@@ -127,7 +127,7 @@ public class TeamManager {
 				{
 					String name = splitLine[1];
 					int id = Integer.parseInt(splitLine[2]);
-					add(new Student(name,id));
+					//add(new Student(name,id));
 				}
 			}
 		}
